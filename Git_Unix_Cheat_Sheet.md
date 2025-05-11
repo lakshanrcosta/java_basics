@@ -3,6 +3,7 @@
 ## Git Cheat Sheet
 
 ### Basic Commands
+
 ```bash
 git init [directory]                 # Initialize a new Git repository.
 # directory: (Optional) Specifies the directory for the new repository.

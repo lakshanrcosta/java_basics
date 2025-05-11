@@ -168,8 +168,6 @@ var items = new String[]{"apple", "banana", "cherry"};  // inferred as String[]
 
 The `var` keyword has **strict rules** in Java. Below are common incorrect usages and why they fail.
 
----
-
 #### 🚫 1. Declaration without initialization
 
 ```java
@@ -391,3 +389,122 @@ final double PI = 3.14159;
 | **Local**      | Method/block  | Until method exits         | Developer          |
 | **Instance**   | Class          | As long as object exists   | Java (default)     |
 | **Static**     | Class (`static`) | As long as class is loaded | Java (default)   |
+
+---
+
+## 🔄 Type Casting and Wrapper Classes in Java
+
+### 🧠 What is Type Casting?
+
+**Type casting** in Java is the process of converting a value from one data type to another.
+
+There are two types of casting:
+
+- **Widening Casting (Implicit)**
+- **Narrowing Casting (Explicit)**
+
+---
+
+#### ✅ Widening Casting (Implicit)
+
+Widening (upcasting) converts a smaller type to a larger type automatically.
+
+| From     | To        |
+|----------|-----------|
+| `byte`   | `short`   |
+| `short`  | `int`     |
+| `int`    | `long`    |
+| `long`   | `float`   |
+| `float`  | `double`  |
+
+```java
+int myInt = 100;
+double myDouble = myInt;  // Implicit casting: int to double
+System.out.println(myDouble);  // Output: 100.0
+```
+
+### ⚠️ Narrowing Casting (Explicit)
+
+Narrowing (downcasting) converts a larger type to a smaller type manually using cast syntax.
+
+```java
+double myDouble = 9.78;
+int myInt = (int) myDouble;  // Explicit casting: double to int
+System.out.println(myInt);   // Output: 9
+```
+
+🔥 May result in data loss or precision loss.
+
+#### 🧪 Special Case: char and int
+```java
+char c = 'A';
+int ascii = c;  // 'A' = 65
+System.out.println(ascii);  // Output: 65
+```
+
+```java
+int num = 66;
+char letter = (char) num;
+System.out.println(letter);  // Output: B
+```
+
+---
+
+### 🎁 Wrapper Classes in Java
+
+Java provides **wrapper classes** to use **primitive data types as objects**. These are especially useful when working with:
+
+- **Collections** (`List`, `Set`, etc.)
+- **Generics**
+- **Utility methods**
+- **Nullable values**
+
+### 🔄 Primitive to Wrapper Mapping
+
+| Primitive | Wrapper     |
+|-----------|-------------|
+| `byte`    | `Byte`      |
+| `short`   | `Short`     |
+| `int`     | `Integer`   |
+| `long`    | `Long`      |
+| `float`   | `Float`     |
+| `double`  | `Double`    |
+| `char`    | `Character` |
+| `boolean` | `Boolean`   |
+
+
+### ✅ Why Wrapper Classes?
+
+Wrapper classes are useful in the following scenarios:
+
+- Required for use in **collections** (e.g., `List<Integer>`, `Map<String, Boolean>`)
+- Enable use of **`null` values** (primitives can't be null)
+- Provide **utility methods** such as:
+  - `parseInt()`
+  - `compareTo()`
+  - `toString()`
+  - `valueOf()`
+
+---
+
+### 🔄 Autoboxing and Unboxing
+
+Java automatically converts between **primitive types** and their **corresponding wrapper classes**.
+
+#### 🔹 Autoboxing (Primitive → Wrapper)
+
+The compiler automatically converts a primitive to its wrapper object:
+
+```java
+int num = 5;
+Integer boxedNum = num;  // Autoboxing
+```
+
+#### 🔹 Unboxing (Wrapper → Primitive)
+
+The compiler automatically converts a wrapper object to its primitive type:
+
+```java
+Integer obj = 10;
+int value = obj;  // Unboxing
+```
